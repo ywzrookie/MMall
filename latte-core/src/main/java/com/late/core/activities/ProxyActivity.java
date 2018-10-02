@@ -10,11 +10,12 @@ import com.late.core.fragments.LatteFragment;
 
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportActivity;
+import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation.SupportActivityDelegate;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
-public abstract class ProxyActivity extends AppCompatActivity implements ISupportActivity {
+public abstract class ProxyActivity extends SupportActivity {
     private final SupportActivityDelegate DELEGATE = new SupportActivityDelegate(this);
 
     public abstract LatteFragment setRootDelegate();
@@ -43,38 +44,5 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         System.runFinalization();
     }
 
-    @Override
-    public SupportActivityDelegate getSupportDelegate() {
-        return DELEGATE;
-    }
 
-    @Override
-    public ExtraTransaction extraTransaction() {
-        return DELEGATE.extraTransaction();
-    }
-
-    @Override
-    public FragmentAnimator getFragmentAnimator() {
-        return DELEGATE.getFragmentAnimator();
-    }
-
-    @Override
-    public void setFragmentAnimator(FragmentAnimator fragmentAnimator) {
-        DELEGATE.setFragmentAnimator(new DefaultHorizontalAnimator());
-    }
-
-    @Override
-    public FragmentAnimator onCreateFragmentAnimator() {
-        return DELEGATE.onCreateFragmentAnimator();
-    }
-
-    @Override
-    public void onBackPressedSupport() {
-        DELEGATE.onBackPressedSupport();
-    }
-
-    @Override
-    public void onBackPressed() {
-        DELEGATE.onBackPressed();
-    }
 }
