@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.diabin.fastec.example">
 
+
     <application
         android:name="com.latte.example.ExampleApp"
         android:allowBackup="true"

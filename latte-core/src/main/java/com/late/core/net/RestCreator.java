@@ -3,6 +3,7 @@ package com.late.core.net;
 import com.late.core.app.ConfigType;
 import com.late.core.app.Latte;
 
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -14,6 +15,15 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * Describe:
  */
 public class RestCreator {
+
+    private static final class ParamsHolder {
+        public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+    }
+
+    public static WeakHashMap<String, Object> getParams() {
+        return ParamsHolder.PARAMS;
+    }
+
 
     public static RestService getRestService() {
         return RestServiceHolder.REST_SERVICE;
