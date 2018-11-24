@@ -6,7 +6,7 @@ import com.late.core.net.callback.IError;
 import com.late.core.net.callback.IFailure;
 import com.late.core.net.callback.IRequest;
 import com.late.core.net.callback.ISuccess;
-import com.late.core.ui.LoaderStyle;
+import com.late.core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

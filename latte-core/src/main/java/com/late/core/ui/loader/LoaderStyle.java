@@ -1,4 +1,4 @@
-package com.late.core.ui;
+package com.late.core.ui.loader;
 
 import com.wang.avi.indicators.BallBeatIndicator;
 import com.wang.avi.indicators.BallClipRotateIndicator;

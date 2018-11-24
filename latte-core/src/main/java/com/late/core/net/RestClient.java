@@ -1,7 +1,6 @@
 package com.late.core.net;
 
 import android.content.Context;
-import android.content.MutableContextWrapper;
 
 import com.late.core.net.callback.IError;
 import com.late.core.net.callback.IFailure;
@@ -9,8 +8,8 @@ import com.late.core.net.callback.IRequest;
 import com.late.core.net.callback.ISuccess;
 import com.late.core.net.callback.RequestCallbacks;
 import com.late.core.net.download.DownloadHandler;
-import com.late.core.ui.LatteLoader;
-import com.late.core.ui.LoaderStyle;
+import com.late.core.ui.loader.LatteLoader;
+import com.late.core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -20,7 +19,6 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by ywz on 18-10-2.

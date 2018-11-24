@@ -2,8 +2,10 @@ package com.latte.example;
 
 import android.app.Application;
 
+import com.diabin.fastec.example.R;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.late.core.app.Latte;
+import com.late.core.net.interceptors.DebugInterceptor;
 import com.latte.ec.icon.FontEcModule;
 
 /**
@@ -19,6 +21,7 @@ public class ExampleApp extends Application{
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withApiHost("http:127.0.0.1/")
+                .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
     }
 }
