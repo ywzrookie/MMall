@@ -10,11 +10,18 @@ import com.diabin.fastec.example.R;
 import com.late.core.activities.ProxyActivity;
 import com.late.core.app.Latte;
 import com.late.core.fragments.LatteFragment;
+import com.late.core.ui.launcher.ILauncherListener;
+import com.late.core.ui.launcher.OnLauncherFinishTag;
 
 import launcher.LauncherDelegate;
 import launcher.LauncherScrollDelegate;
+import sign.ISignListener;
+import sign.SignInFragment;
+import sign.SignUpFragment;
 
-public class ExampleActivity extends ProxyActivity {
+public class ExampleActivity extends ProxyActivity implements
+        ISignListener,
+        ILauncherListener {
 
 
     @Override
@@ -32,4 +39,29 @@ public class ExampleActivity extends ProxyActivity {
     }
 
 
+    @Override
+    public void onSignInSuccess() {
+        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSignUpSuccess() {
+        Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLauncherFinish(OnLauncherFinishTag tag) {
+        switch (tag) {
+            case SIGNED:
+                Toast.makeText(this, "启动结束，用户登录", Toast.LENGTH_SHORT).show();
+                startWithPop(new ExampleFragment());
+                break;
+            case NOT_SIGNED:
+                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_SHORT).show();
+                startWithPop(new SignInFragment());
+                break;
+                default:
+                    break;
+        }
+    }
 }
