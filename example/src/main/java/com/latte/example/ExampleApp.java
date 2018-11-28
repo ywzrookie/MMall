@@ -23,8 +23,10 @@ public class ExampleApp extends Application{
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
-                .withApiHost("http:127.0.0.1/")
-                .withInterceptor(new DebugInterceptor("index", R.raw.test))
+                .withApiHost("http://mock.fulingjie.com/mock/data/")
+                .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                .withWeChatAppId("")
+                .withWeChatSecret("")
                 .configure();
         initStetho();
         DatabaseManager.getInstance().init(this);

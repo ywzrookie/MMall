@@ -1,8 +1,8 @@
 package com.late.core.app;
 
 import android.content.Context;
+import android.os.Handler;
 
-import java.util.HashMap;
 
 /**
  * Created by ywz on 18-9-29.
@@ -13,7 +13,7 @@ public final class Latte {
     public static Configurator init(Context context) {
         Configurator.getInstance()
                 .getLatteConfigs()
-                .put(ConfigType.APPLICATION_CONTEXT, context.getApplicationContext());
+                .put(ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }
 
@@ -24,7 +24,11 @@ public final class Latte {
     }
 
     public static Context getApplicationContext() {
-        return (Context) getConfiguration(ConfigType.APPLICATION_CONTEXT);
+        return (Context) getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
+    }
+
+    public static Handler getHanlder() {
+        return getConfiguration(ConfigKeys.HANDLER);
     }
 
 }

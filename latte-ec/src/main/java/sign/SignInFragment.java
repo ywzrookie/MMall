@@ -6,12 +6,18 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Toast;
 
 import com.late.core.fragments.LatteFragment;
 import com.late.core.net.RestClient;
+import com.late.core.net.callback.IFailure;
 import com.late.core.net.callback.ISuccess;
+import com.late.core.wechat.LatteWeChat;
+import com.late.core.wechat.callbacks.IWeChatSignInCallback;
 import com.latte.ec.R;
 import com.latte.ec.R2;
+
+import java.util.logging.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -50,6 +56,12 @@ public class SignInFragment extends LatteFragment {
                             SignHandler.onSignIn(response, mISignListener);
                         }
                     })
+                    .failure(new IFailure() {
+                        @Override
+                        public void onFailure() {
+                            Toast.makeText(getContext(), "网络来连接失败", Toast.LENGTH_SHORT).show();
+                        }
+                    })
                     .build()
                     .post();
         }
@@ -57,7 +69,12 @@ public class SignInFragment extends LatteFragment {
 
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickWeChat() {
-
+        LatteWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
+                Toast.makeText(getContext(), userInfo, Toast.LENGTH_SHORT).show();
+            }
+        }).signIn();
     }
 
     @OnClick(R2.id.tv_link_sign_up)

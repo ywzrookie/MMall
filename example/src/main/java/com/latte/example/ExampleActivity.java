@@ -12,9 +12,11 @@ import com.late.core.app.Latte;
 import com.late.core.fragments.LatteFragment;
 import com.late.core.ui.launcher.ILauncherListener;
 import com.late.core.ui.launcher.OnLauncherFinishTag;
+import com.latte.ec.main.EcBottomFragment;
 
 import launcher.LauncherDelegate;
 import launcher.LauncherScrollDelegate;
+import qiu.niorgai.StatusBarCompat;
 import sign.ISignListener;
 import sign.SignInFragment;
 import sign.SignUpFragment;
@@ -31,6 +33,8 @@ public class ExampleActivity extends ProxyActivity implements
         if (actionBar != null) {
             actionBar.hide();
         }
+        Latte.getConfigurator().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override
@@ -53,11 +57,11 @@ public class ExampleActivity extends ProxyActivity implements
     public void onLauncherFinish(OnLauncherFinishTag tag) {
         switch (tag) {
             case SIGNED:
-                Toast.makeText(this, "启动结束，用户登录", Toast.LENGTH_SHORT).show();
-                startWithPop(new ExampleFragment());
+//                Toast.makeText(this, "启动结束，用户登录", Toast.LENGTH_SHORT).show();
+                startWithPop(new EcBottomFragment());
                 break;
             case NOT_SIGNED:
-                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_SHORT).show();
                 startWithPop(new SignInFragment());
                 break;
                 default:
